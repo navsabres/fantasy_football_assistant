@@ -1,15 +1,24 @@
 # Fantasy Football Virtual Assistant
 
-A Python-based virtual assistant that helps you manage your fantasy football team with features like player stats, lineup recommendations, and matchup analysis.
+A comprehensive Python-based virtual assistant that helps you manage your fantasy football team using real-time data from NFL, ESPN, and Sleeper APIs.
 
 ## Features
 
-- Player Stats and Insights
-- Lineup Recommendations
-- Matchup Analysis
-- Trade Evaluations
-- Performance Trend Analysis
-- Waiver Wire Recommendations
+### Core Features
+- Real-time player statistics and performance tracking
+- Data-driven lineup recommendations
+- Advanced matchup analysis
+- Trade value calculator
+- Injury tracking and updates
+- Waiver wire recommendations
+- Multi-source data integration (NFL, ESPN, Sleeper)
+
+### Data Sources
+- NFL Official API
+- ESPN Fantasy API
+- Sleeper API
+- Automated data aggregation and caching
+- Real-time updates and notifications
 
 ## Installation
 
@@ -19,16 +28,42 @@ git clone <repository-url>
 cd fantasy_football_assistant
 ```
 
-2. Create a virtual environment (recommended):
+2. Create and activate a virtual environment:
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
 3. Install required packages:
 ```bash
 pip install -r requirements.txt
 ```
+
+4. Set up API credentials:
+```bash
+cp .env.template .env
+```
+Then edit `.env` with your API keys:
+- Get NFL API key from https://api.nfl.com/
+- Get ESPN API key from https://www.espn.com/apis/devcenter/docs/
+- Sleeper API (no key required currently)
+
+## Configuration
+
+The project uses several configuration files:
+- `config.py`: Main configuration settings
+- `.env`: API keys and environment-specific settings
+- `utils.py`: Utility functions and scoring calculations
+- `data_manager.py`: Data fetching and processing logic
+
+### Customizing Settings
+
+You can customize various aspects of the assistant:
+- Scoring settings in `config.py`
+- Cache duration for different data types
+- API rate limiting
+- League-specific settings
+- Position-specific weights for rankings
 
 ## Usage
 
@@ -39,12 +74,12 @@ python main.py
 
 ### Example Commands
 
-1. Get player stats:
+1. Get comprehensive player stats:
 ```
 Get stats for Patrick Mahomes
 ```
 
-2. Get lineup recommendations:
+2. Get lineup recommendations based on multiple data sources:
 ```
 Who should I start this week?
 ```
@@ -54,42 +89,88 @@ Who should I start this week?
 Any injured players?
 ```
 
-4. Get waiver wire recommendations:
+4. Get data-driven waiver recommendations:
 ```
 Show me waiver recommendations
 ```
 
-5. Analyze matchups:
+5. Analyze matchups with advanced statistics:
 ```
 How does the matchup look for Travis Kelce?
 ```
 
-## Project Structure
+6. Evaluate trades using multi-source data:
+```
+Evaluate trade: giving Patrick Mahomes, getting Josh Allen
+```
 
-- `main.py`: Main application entry point
-- `data_manager.py`: Handles data operations and storage
-- `utils.py`: Utility functions and constants
-- `data/`: Directory for storing user data and cached information
+## Data Integration
 
-## Sample Data
+The assistant integrates data from multiple sources:
+- NFL API: Official statistics and player data
+- ESPN API: Fantasy scoring and projections
+- Sleeper API: Additional player data and trending information
 
-The assistant currently uses sample data for demonstration purposes. In a production environment, you would integrate with fantasy football APIs to get real-time data.
+### Data Refresh Rates
+- Player Stats: Every 15 minutes
+- Injury Reports: Every 30 minutes
+- Projections: Every hour
+- News Updates: Every 10 minutes
 
-## Future Enhancements
+## Advanced Features
 
-1. Integration with real fantasy football APIs
-2. Machine learning for better predictions
-3. Web interface
-4. Mobile app support
-5. Custom league scoring support
-6. Trade analyzer improvements
-7. Player comparison features
-8. Historical performance analytics
+### Machine Learning Integration
+- Trend analysis for player performance
+- Matchup prediction algorithms
+- Trade value optimization
+
+### Analytics
+- Advanced player performance metrics
+- Strength of schedule analysis
+- Historical performance tracking
+- Trend-based predictions
+
+## Error Handling
+
+The assistant includes robust error handling:
+- API rate limiting management
+- Data validation and cleaning
+- Fallback data sources
+- Automatic retry mechanisms
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## Future Enhancements
+
+1. Machine Learning Integration
+   - Advanced player performance prediction
+   - Matchup outcome probability
+   - Trade value optimization
+
+2. Additional Data Sources
+   - Weather data integration
+   - Social media sentiment analysis
+   - Advanced statistics providers
+
+3. Enhanced Features
+   - Dynasty league support
+   - Draft assistance
+   - Custom scoring system support
+   - Mobile app integration
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- NFL for providing official statistics
+- ESPN for fantasy sports data
+- Sleeper for additional player insights
+- Open-source community for various dependencies
